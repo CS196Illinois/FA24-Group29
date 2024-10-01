@@ -5,8 +5,11 @@ import NavBarComponent from './components/NavBarComponent';
 function App() {
   return (
     <div className="App">
-      <NavBarComponent />
-      <HomePageBodyComponent />
+      <body className="bg-waves bg-no-repeat bg-center w-full h-full bg-fixed">
+        <NavBarComponent />
+        <HomePageBodyComponent />
+      </body>
+
     </div>
   );
 }
