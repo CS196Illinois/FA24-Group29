@@ -15,7 +15,7 @@ function NavBarComponent() {
                     <div className="pt-8 pb-4 space-x-10">
                         <a href="#" title="" className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white"> Home </a>
 
-                        <a href="#" title="" className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white"> Input Music </a>
+                        <a href="#" title="" className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white"> Music Recommendations </a>
 
                         <a href="#" title="" className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white"> About </a>
                     </div>
