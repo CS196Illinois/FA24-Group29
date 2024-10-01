@@ -6,9 +6,9 @@ function NavBarComponent() {
         <nav>
             <img></img>
             <ul>
-                <li>Home</li>
-                <li>Input Music</li>
-                <li>About</li>
+                <a>Home</a>
+                <a>Input Music</a>
+                <a>About</a>
             </ul>
         </nav>
     </>)
