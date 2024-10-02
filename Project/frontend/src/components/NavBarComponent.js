@@ -5,7 +5,7 @@ import logoImg from './img/MusicLogo.jpg'
 function NavBarComponent() {
     return (
     <>
-        <header className="fpy-4 pt-4 bg-black h-25">
+        <header className="fpy-4 pt-4 bg-black h-25 top-0 w-full">
             <div className="px-36 ml-1 mr-1 mx-auto max-w-full h-full flex flex-row justify-between">
                 <div className="flex items-center">
                     <img className="w-auto h-20" src={logoImg} alt="Img not found"/>
