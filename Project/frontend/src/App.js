@@ -1,9 +1,6 @@
 import './App.css';
 import HomePageBodyComponent from './components/HomePageBodyComponent';
 import NavBarComponent from './components/NavBarComponent';
-import {useState} from 'react'
-
-const [count, setCount] = useState(0)
 
 function App() {
   return (
