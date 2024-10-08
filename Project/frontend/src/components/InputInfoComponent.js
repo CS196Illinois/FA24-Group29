@@ -18,14 +18,15 @@ function InputInfoComponent() {
     } 
 
 
+
     return (
         <div className = "body">
-            <h1 className = "bigheader"> Ready for some accurate music recommendations?</h1>
+            <h1 className = "bigheader"> Ready for some accurate </h1>
+            <h className = "recommendations"> music recommendations?</h>
             <div className = "inputinfo">
                 <div className = "info">
                     <p> 
-                        The directions are pretty simple!<br />
-                        <span className = "extraspace"></span>
+                        <p className = "directions">The directions are pretty simple!</p><br />
                         1. Now what you first want to do is input your favorite artist's name.<br />
                         <span className = "extraspace"></span>
                         2. Next, you want to input your favorite genre of music! <br />
@@ -34,14 +35,14 @@ function InputInfoComponent() {
                     </p>
                 </div>
                 <div className = "input">
-                    <h1>This is where the form will go.</h1>
                     <div className = "inputforms">
                         <label>Favorite artist</label>
-                        <input className = "artistinput" type = "text" value = {artist} onChange = {handleArtist}/>
+                        <input autofocus placeholder = "Your favorite artist" className = "artistinput" type = "text" value = {artist} onChange = {handleArtist}/>
                         <label>Favorite genre</label>
-                        <input className = "genreinput" type = "text" value = {genre} onChange = {handleGenre}/>
+                        <input placeholder = "Your favorite genre" className = "genreinput" type = "text" value = {genre} onChange = {handleGenre}/>
                         <label>Favorite album</label>
-                        <input className = "albuminput" type = "text" value = {album} onChange = {handleAlbum}/>
+                        <input placeholder = "Your favorite artist" className = "albuminput" type = "text" value = {album} onChange = {handleAlbum}/>
+                        <button className = "resetbutton">Reset responses</button>
                     </div>
                 </div>
             </div>
