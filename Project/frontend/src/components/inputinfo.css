@@ -1,12 +1,22 @@
 .body {
-    background-color: black;
+    background-color: white;
     color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .inputinfo {
     display:flex;
+    color: black;
 }
-
+.bigheader {
+    color: black;
+    padding-right: 800px;
+    margin-top: 50px;
+    align-items: center;
+    font-size: 50px;
+    margin-left: 70px;
+    font-weight: bold;
+}
 .input {
     padding-left: 100px;
     color: white;
@@ -18,9 +28,37 @@
 }
 
 .info {
-    padding-left: 60px;
+    padding-left: 150px;
+    padding-top: 40px;
 }
 .inputforms {
-    color: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    margin-left: 150px;
 }
-
+.artistinput {
+    width: 400px;
+    margin-bottom: 20px;
+    border-color: red;
+    border-width: 3px;
+    border-radius: 7px;
+}
+.genreinput {
+    width: 400px;
+    margin-bottom: 20px;
+    border-color: red;
+    border-width: 3px;
+    border-radius: 7px;
+}
+.albuminput {
+    width: 400px;
+    margin-bottom: 20px;
+    border-color: red;
+    border-width: 3px;
+    border-radius: 7px;
+}
+.extraspace {
+    margin-top: 35px;
+    display: block;
+}

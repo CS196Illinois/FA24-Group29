@@ -4,7 +4,7 @@ import './aboutus.css';
 function AboutUsComponent() {
     return (
         <d>
-            <div className = "body">
+            <div className = "bodyaboutus">
                 <div className = "text">
                     <h1 className = "question">Why create this application?</h1>
                         <div className = "longText">
