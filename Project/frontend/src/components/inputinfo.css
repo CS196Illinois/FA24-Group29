@@ -1,21 +1,32 @@
 .body {
-    background-color: white;
+    background-image: linear-gradient(black,red);
     color: white;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    height: 800px;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 .inputinfo {
     display:flex;
-    color: black;
+    color: white;
 }
 .bigheader {
-    color: black;
-    padding-right: 800px;
-    margin-top: 50px;
+    color: white;
+    padding-right: 500px;
+    padding-top: 20px;
     align-items: center;
     font-size: 50px;
-    margin-left: 70px;
+    margin-left: 100px;
     font-weight: bold;
+}
+.recommendations {
+    color: red;
+    padding-right: 500px;
+    align-items: center;
+    font-size: 50px;
+    margin-left: 100px;
+    font-weight: bold;
+    padding-bottom: 70px;
+
 }
 .input {
     padding-left: 100px;
@@ -29,10 +40,10 @@
 
 .info {
     padding-left: 150px;
-    padding-top: 40px;
+    padding-top: 20px;
 }
 .inputforms {
-    color: black;
+    color: white;
     display: flex;
     flex-direction: column;
     margin-left: 150px;
@@ -43,6 +54,7 @@
     border-color: red;
     border-width: 3px;
     border-radius: 7px;
+    height: 40px;
 }
 .genreinput {
     width: 400px;
@@ -50,6 +62,7 @@
     border-color: red;
     border-width: 3px;
     border-radius: 7px;
+    height: 40px;
 }
 .albuminput {
     width: 400px;
@@ -57,8 +70,25 @@
     border-color: red;
     border-width: 3px;
     border-radius: 7px;
+    height: 40px;
 }
 .extraspace {
-    margin-top: 35px;
+    margin-bottom: 35px;
     display: block;
+}
+.directions {
+    font-weight: bold;
+    font-size: 25px;
+}
+.resetbutton {
+    border: none;
+    border-color: #000000;
+    width: 200px;
+    transition-duration: .4s;
+    height: 40px;
+    background-color: black;
+    color: white;
+}
+.resetbutton:hover {
+    background-color: gray;
 }
