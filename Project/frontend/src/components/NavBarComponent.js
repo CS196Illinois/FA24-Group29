@@ -1,5 +1,6 @@
 import React from 'react';
 import logoImg from './img/MusicLogo.jpg'
+import {Link} from 'react-router-dom';
 
 
 function NavBarComponent() {
@@ -13,11 +14,11 @@ function NavBarComponent() {
 
                 <nav>
                     <div className="pt-7 pb-7 space-x-10 h-full">
-                        <a href="#" title="" className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white"> Home </a>
+                        <Link to='/' title="" className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white"> Home </Link>
 
-                        <a href="#" title="" className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white"> Music Recommendations </a>
+                        <Link to='/inputinfo' title="" className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white"> Music Recommendations </Link>
 
-                        <a href="#" title="" className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white"> About </a>
+                        <Link to='/aboutus' title="" className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white"> About </Link>
                     </div>
                 </nav>
             </div>

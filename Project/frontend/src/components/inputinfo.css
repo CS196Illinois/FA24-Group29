@@ -1,0 +1,26 @@
+.body {
+    background-color: black;
+    color: white;
+}
+
+.inputinfo {
+    display:flex;
+}
+
+.input {
+    padding-left: 100px;
+    color: white;
+}
+
+.musicinfoinput {
+    vertical-align: center;
+    color: white;
+}
+
+.info {
+    padding-left: 60px;
+}
+.inputforms {
+    color: white;
+}
+

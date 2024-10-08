@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 
 function HomePageBodyComponent() {
     return (<>
@@ -11,7 +12,7 @@ function HomePageBodyComponent() {
                     <p class="max-w-lg mt-4 text-xl font-normal text-gray-400 sm:mt-8">Our machine learning models analyzes many various features of songs including tempo, genre, and lyrics. Input any song or playlist into our model and we'll give you recommendations. Add more info about how model works.</p>
                     <div class="mr-72 relative inline-flex items-center justify-center mt-8 sm:mt-12 group">
                         <div class="absolute transition-all duration-200 rounded-full -inset-px bg-gradient-to-r from-red-500 to-pink-800 group-hover:shadow-lg group-hover:shadow-red-500/70"></div>
-                        <a href="#" title="" class="relative inline-flex items-center justify-center px-8 py-3 text-base font-normal text-white bg-black border border-transparent rounded-full" role="button"> Get Started With Music </a>
+                        <Link to='/inputinfo' title="" class="relative inline-flex items-center justify-center px-8 py-3 text-base font-normal text-white bg-black border border-transparent rounded-full" role="button"> Get Started With Music </Link>
                     </div>
 
                     <div>
