@@ -1,0 +1,23 @@
+.bottomnavbar {
+    height: 400px;
+    background-color: white;
+    display: flex;
+    color: black;
+}
+.text {
+    color: black;
+    display: flex;
+
+}
+.column1 {
+    margin-left: 200px;
+    margin-right: 200px;
+}
+.column2 {
+    margin-right: 200px;
+
+}
+.column3 {
+    
+}
+

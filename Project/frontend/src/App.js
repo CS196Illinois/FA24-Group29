@@ -4,6 +4,7 @@ import NavBarComponent from './components/NavBarComponent';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import AboutUsComponent from './components/AboutUsComponent';
 import InputInfoComponent from './components/InputInfoComponent';
+import BottomNavBarComponent from './components/BottomNavBarComponent';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path='/aboutus' element={<AboutUsComponent />}/>
             <Route path='/inputinfo' element={<InputInfoComponent />}/>
           </Routes>
+          <BottomNavBarComponent />
         </Router>
       </body>
 
