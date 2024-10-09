@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 function HomePageBodyComponent() {
     return (<>
     <section class="py-12 bg-black sm:pb-16 lg:pb-20 xl:pb-24">
-        <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+        <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl pt-20">
             <div class="relative">
                 <div class="lg:w-2/3">
                     <p class="max-w-lg text-sm font-normal tracking-wider text-gray-300 uppercase">Getting Better Music Recommendations</p>
