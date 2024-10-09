@@ -43,7 +43,7 @@ function InputInfoComponent() {
             <h className = "recommendations"> music recommendations?</h>
             <div className = "inputinfo">
                 <div className = "info">
-                    <p> 
+                    <p className = "directionbody"> 
                         <p className = "directions">The directions are pretty simple!</p><br />
                         1. Now what you first want to do is input your favorite artist's name.<br />
                         <span className = "extraspace"></span>

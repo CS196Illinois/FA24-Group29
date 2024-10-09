@@ -11,9 +11,9 @@
     display:flex;
 }
 .bigheader {
-    color: rgb(173,21,42);
+    color: rgb(255,11,11);
     padding-right: 500px;
-    padding-top: 20px;
+    padding-top: 120px;
     align-items: center;
     font-size: 50px;
     margin-left: 100px;
@@ -105,4 +105,8 @@
 .label {
     margin-right: 380px;
     font-weight: bold;
+    margin-top: 20px;
+}
+.directionbody {
+    margin-left: 10px;
 }
