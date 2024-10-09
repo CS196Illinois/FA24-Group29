@@ -1,23 +1,14 @@
 ##imports
 #data wrangling
-import os
 import numpy as np
 import pandas as pd
-
-#visualization
-import seaborn as sns
-import plotly.express as px 
-import matplotlib.pyplot as plt
 
 #ml
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
-from sklearn.manifold import TSNE
-from sklearn.decomposition import PCA
 from sklearn.metrics import euclidean_distances
 from scipy.spatial.distance import cdist
-import difflib
 
 #quality of life
 from collections import defaultdict
@@ -30,50 +21,27 @@ warnings.filterwarnings("ignore")
 data = pd.read_csv("Project/ml/Kaggle_1950_2019.csv")
 df = pd.DataFrame(data).reset_index()
 
-print(df.info())
-
-
-## exploratory data analysis
-#data cleaning
+#data cleaning - selecting numeric data only for modeling
 X = df.select_dtypes(np.number)
 number_cols = list(X.columns)
-print(number_cols)
 
-#calling pipeline function & specifying kmeans algo
+
+##setting up ML model
+#defining cluster pipeline
 song_cluster_pipeline = Pipeline([('scaler', StandardScaler()), 
                                  ('kmeans', KMeans(n_clusters=20, verbose=False))]
                                  , verbose=False)
 
-#fitting hyperparameters in model, then using model to return predict
+#fitting hyperparameters in cluster pipeline
 song_cluster_pipeline.fit(X)
-song_cluster_labels = song_cluster_pipeline.predict(X)
 
 #adding cluster as a new property to df
+song_cluster_labels = song_cluster_pipeline.predict(X)
 df['cluster_label'] = song_cluster_labels
-
-print(df)
-
-#principal component analysis (capturing similarity between songs through proximity of xy coordinate)
-pca_pipeline = Pipeline([('scaler', StandardScaler()), 
-                         ('PCA', PCA(n_components=2))])
-song_embedding = pca_pipeline.fit_transform(X)
-print(song_embedding)
-
-#visualization of PCA
-projection = pd.DataFrame(columns=['x', 'y'], data=song_embedding)
-projection['title'] = df['track_name']
-projection['cluster'] = df['cluster_label']
-
-fig = px.scatter(
-    projection, x='x', y='y', color='cluster', hover_data=['x', 'y', 'title']
-)
-fig.show()
-## end of exploratory data analysis
+##end of ML model
 
 
-##building the song recommendation program
-
-#reformating input from an array of dictionaries to a dictionary of a list
+#reformating input from an array of dictionaries to a dictionary of a list (changes depending on input)
 def flatten_dict_list(dict_list):
 
     flattened_dict = defaultdict()
@@ -104,17 +72,17 @@ def get_mean_vector(song_list):
     for song in song_list:
         song_data = get_song_data(song['name'], song['year'])
         if song_data is None: 
+            # TO_DO: give them a chance to reenter / validation through website input UI?
             print('Warning: {} does not exist in database'.format(song['name']))
             continue
         song_vector = song_data[number_cols].values
-        np.delete(song_vector, np.s_[1:3], 1)
+        print(song_vector)
+        np.delete(song_vector, np.s_[1:3], 1) #getting rid of unecessary columns, TO_DO: delete here or delete in df
         song_vectors.append(song_vector)
     
     song_matrix = np.array(list(song_vectors))
     print(song_matrix)
     return np.mean(song_matrix, axis=0)
-
-
 
 
 #actual recommendation function
@@ -129,7 +97,7 @@ def recommend_songs(song_list, n_songs=10):
     #scaling xy for measuring distance (similarity)
     scaled_df = scaler.transform(df[number_cols])
     scaled_song_center = scaler.transform(song_center)
-    distance = cdist(scaled_song_center, scaled_df, 'cosine')
+    distance = cdist(scaled_song_center, scaled_df)
     print(distance)
     index = list(np.argsort(distance)[:, :n_songs][0])
 
