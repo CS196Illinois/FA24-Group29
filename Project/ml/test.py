@@ -17,6 +17,7 @@ from sklearn.manifold import TSNE
 from sklearn.decomposition import PCA
 from sklearn.metrics import euclidean_distances
 from scipy.spatial.distance import cdist
+import difflib
 
 #quality of life
 from collections import defaultdict
@@ -26,7 +27,8 @@ warnings.filterwarnings("ignore")
 
 
 #loading data into a dataframe (df)
-df = pd.read_csv("Project/ml/Kaggle_1950_2019.csv")
+data = pd.read_csv("Project/ml/Kaggle_1950_2019.csv")
+df = pd.DataFrame(data).reset_index()
 
 print(df.info())
 
@@ -35,6 +37,7 @@ print(df.info())
 #data cleaning
 X = df.select_dtypes(np.number)
 number_cols = list(X.columns)
+print(number_cols)
 
 #calling pipeline function & specifying kmeans algo
 song_cluster_pipeline = Pipeline([('scaler', StandardScaler()), 
@@ -64,5 +67,47 @@ projection['cluster'] = df['cluster_label']
 fig = px.scatter(
     projection, x='x', y='y', color='cluster', hover_data=['x', 'y', 'title']
 )
-fig.show()
+#fig.show()
 ## end of exploratory data analysis
+
+
+##building the song recommendation program
+#retrieve information of searched song
+def get_song_data(name, year):
+    #TO_DO - replace == with .contains
+    song_data = df[(df["track_name"].str.lower() == name.lower()) & (df['release_date'] == year)].reset_index()
+    if song_data.empty:
+        return None
+    return song_data
+
+
+#find the average values of the song list inputted
+def get_mean_vector(song_list):
+
+    song_vectors = []
+
+    for song in song_list:
+        song_data = get_song_data(song['name'], song['year'])
+        if song_data is None: 
+            print('Warning: {} does not exist in database'.format(song['name']))
+            continue
+        song_vector = song_data[number_cols].values
+        np.delete(song_vector, np.s_[1:3], 1)
+        song_vectors.append(song_vector)
+    
+    song_matrix = np.array(list(song_vectors))
+    print(song_matrix)
+    return np.mean(song_matrix, axis=0)
+
+#def recommend_songs(song_list, n_songs=10):
+    #metadata metrics tbd
+#    metadata_cols = ['name', 'year', 'artists']
+
+
+
+
+mean_vector = get_mean_vector([{'name': 'The Story of Us', 'year': 2010},
+                {'name': 'Natalie', 'year': 2012},
+                {'name': 'All Apologies', 'year': 1993},
+                {'name': 'Stay Away', 'year': 1993}])
+print(mean_vector)
