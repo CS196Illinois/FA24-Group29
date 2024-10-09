@@ -1,16 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+
 .body {
-    background-image: linear-gradient(black,red);
-    color: white;
+    background-image: linear-gradient(black, rgb(130,42,42));
     height: 800px;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: "Nanum Gothic";
+    color: white;
 }
 
 .inputinfo {
     display:flex;
-    color: white;
 }
 .bigheader {
-    color: white;
+    color: rgb(173,21,42);
     padding-right: 500px;
     padding-top: 20px;
     align-items: center;
@@ -19,58 +20,52 @@
     font-weight: bold;
 }
 .recommendations {
-    color: red;
+    color: white;
     padding-right: 500px;
     align-items: center;
     font-size: 50px;
     margin-left: 100px;
     font-weight: bold;
-    padding-bottom: 70px;
+    padding-bottom: 200px;
 
 }
 .input {
     padding-left: 100px;
-    color: white;
 }
 
 .musicinfoinput {
     vertical-align: center;
-    color: white;
 }
 
 .info {
     padding-left: 150px;
-    padding-top: 20px;
+    padding-top: 40px;
 }
 .inputforms {
-    color: white;
     display: flex;
     flex-direction: column;
     margin-left: 150px;
 }
 .artistinput {
-    width: 400px;
+    width: 480px;
     margin-bottom: 20px;
-    border-color: red;
     border-width: 3px;
-    border-radius: 7px;
     height: 40px;
+    color: black;
 }
 .genreinput {
-    width: 400px;
+    width: 480px;
     margin-bottom: 20px;
-    border-color: red;
     border-width: 3px;
-    border-radius: 7px;
     height: 40px;
+    color: black;
 }
 .albuminput {
-    width: 400px;
+    width: 480px;
     margin-bottom: 20px;
-    border-color: red;
     border-width: 3px;
-    border-radius: 7px;
     height: 40px;
+    color: black;
 }
 .extraspace {
     margin-bottom: 35px;
@@ -91,4 +86,23 @@
 }
 .resetbutton:hover {
     background-color: gray;
+}
+
+.submitbutton {
+    background-color: black;
+    width: 200px;
+    height: 40px;
+    transition-duration: .4s;
+    border: none;
+    color: white;
+    margin-left: 40px;
+}
+
+.submitbutton:hover {
+    background-color: gray;
+}
+
+.label {
+    margin-right: 380px;
+    font-weight: bold;
 }
