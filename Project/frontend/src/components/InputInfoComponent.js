@@ -4,6 +4,8 @@ import { useState } from 'react';
 
 function InputInfoComponent() {
 
+    const [errorMessage, setErrorMessage] = useState("");
+
     const [artist, setArtist] = useState("");
     const handleArtist = (e) => {
         setArtist(e.target.value);
@@ -16,6 +18,22 @@ function InputInfoComponent() {
     const handleAlbum = (e) => {
         setAlbum(e.target.value);
     } 
+
+    const resetValues = () => {
+        setArtist("");
+        setGenre("");
+        setAlbum("");
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (artist == "" || genre == "" || album == "") {
+            setErrorMessage("All fields are required for a good music recommendation!");
+        } else {
+            setErrorMessage("");
+        }
+    }
 
 
 
@@ -36,13 +54,17 @@ function InputInfoComponent() {
                 </div>
                 <div className = "input">
                     <div className = "inputforms">
-                        <label>Favorite artist</label>
-                        <input autofocus placeholder = "Your favorite artist" className = "artistinput" type = "text" value = {artist} onChange = {handleArtist}/>
-                        <label>Favorite genre</label>
-                        <input placeholder = "Your favorite genre" className = "genreinput" type = "text" value = {genre} onChange = {handleGenre}/>
-                        <label>Favorite album</label>
-                        <input placeholder = "Your favorite artist" className = "albuminput" type = "text" value = {album} onChange = {handleAlbum}/>
-                        <button className = "resetbutton">Reset responses</button>
+                            <label className = "label">Favorite artist</label>
+                            <input placeholder = "Your favorite artist goes here!" className = "artistinput" type = "text" value = {artist} onChange = {handleArtist}/>
+                            <label className = "label">Favorite Genre</label>
+                            <input placeholder = "Your favorite genre goes here!" className = "genreinput" type = "text" value = {genre} onChange = {handleGenre}/>
+                            <label className = "label">Favorite Album</label>
+                            <input placeholder = "Your favorite artist goes here!" className = "albuminput" type = "text" value = {album} onChange = {handleAlbum}/>
+                            <div className = "buttons">
+                                <button onClick = {resetValues} className = "resetbutton">Reset responses</button>
+                                <button onClick = {handleSubmit} className = "submitbutton">Submit</button>
+                                {errorMessage && <p style = {{color: "red"}}>{errorMessage}</p>}
+                            </div>
                     </div>
                 </div>
             </div>
