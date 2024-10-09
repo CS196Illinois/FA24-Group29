@@ -1,23 +1,60 @@
 .bottomnavbar {
-    height: 400px;
-    background-color: white;
+    height: 250px;
+    background-color: rgb(43,37,37);
     display: flex;
-    color: black;
+    color: white;
+    font-size: 16px;
 }
-.text {
-    color: black;
+.textbottomnavbar {
+    margin-top: 40px;
+    color: white;
     display: flex;
-
 }
 .column1 {
     margin-left: 200px;
     margin-right: 200px;
+    display: flex;
+    flex-direction: column;
 }
 .column2 {
     margin-right: 200px;
-
+    display: flex;
+    flex-direction: column;
 }
 .column3 {
-    
+    display: flex;
+    flex-direction: column;
 }
 
+.smlogo {
+    width: 20px;
+    height: 20px;
+    margin-left: 40px;
+}
+.subheading {
+    font-size: 19px;
+    padding-bottom: 15px;
+    font-weight: bold;
+    color: rgb(172,42,42);
+}
+
+.musiclogo {
+    width: 200px;
+    height: 140px;
+    margin-left: 90px;
+}
+.image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.smalllogo {
+    width: 25px;
+    height: 25px;
+    margin-right: 15px;
+}
+.socialmedialogos {
+    margin-top: 20px;
+    margin-left: 100px;
+    display: flex;
+}
