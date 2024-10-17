@@ -1,6 +1,6 @@
 import React from 'react';
 import logoImg from './img/MusicLogo.jpg'
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 function NavBarComponent() {

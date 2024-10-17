@@ -68,12 +68,12 @@ try {
 
 
     return (
-        <div className = "body">
-            <h1 className = "bigheader"> Ready for some accurate </h1>
-            <h className = "recommendations"> music recommendations?</h>
+        <div className = "body bg-black">
+            <h1 className = "bigheader text-6xl text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700"> Ready for some accurate </h1>
+            <h className = "recommendations text-4xl"> music recommendations?</h>
             <div className = "inputinfo">
                 <div className = "info">
-                    <p className = "directionbody"> 
+                    <p className = "directionbody text-gray-400"> 
                         <p className = "directions">The directions are pretty simple!</p><br />
                         1. Now what you first want to do is input your favorite artist's name.<br />
                         <span className = "extraspace"></span>
@@ -85,11 +85,11 @@ try {
                 <div className = "input">
                     <div className = "inputforms">
                             <label className = "label">Favorite artist</label>
-                            <input placeholder = "Your favorite artist goes here!" className = "artistinput" type = "text" value = {artistName} onChange = {handleArtistName}/>
+                            <input placeholder = "Your favorite artist goes here!" className = "artistinput musicRecInput" type = "text" value = {artistName} onChange = {handleArtistName}/>
                             <label className = "label">Favorite Genre</label>
-                            <input placeholder = "Your favorite genre goes here!" className = "genreinput" type = "text" value = {genre} onChange = {handleGenre}/>
+                            <input placeholder = "Your favorite genre goes here!" className = "genreinput musicRecInput" type = "text" value = {genre} onChange = {handleGenre}/>
                             <label className = "label">Favorite Track</label>
-                            <input placeholder = "Your favorite track name goes here!" className = "trackinput" type = "text" value = {trackName} onChange = {handleTrackName}/>
+                            <input placeholder = "Your favorite track name goes here!" className = "trackinput musicRecInput" type = "text" value = {trackName} onChange = {handleTrackName}/>
                             <div className = "buttons">
                                 <button onClick = {resetValues} className = "resetbutton">Reset responses</button>
                                 <button onClick = {handleSubmit} className = "submitbutton">Submit</button>

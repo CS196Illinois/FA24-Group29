@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
 
 .body {
-    background-image: linear-gradient(black, rgb(130,42,42));
     height: 800px;
     font-family: "Nanum Gothic";
     color: white;
@@ -11,26 +10,25 @@
     display:flex;
 }
 .bigheader {
-    color: rgb(255,11,11);
+    margin-right: 250px;
     padding-right: 500px;
-    padding-top: 120px;
+    padding-top: 170px;
     align-items: center;
-    font-size: 50px;
     margin-left: 100px;
     font-weight: bold;
 }
 .recommendations {
     color: white;
+    margin-right: 250px;
     padding-right: 500px;
     align-items: center;
-    font-size: 50px;
     margin-left: 100px;
     font-weight: bold;
     padding-bottom: 200px;
 
 }
 .input {
-    padding-left: 100px;
+    padding-left: 10px;
 }
 
 .musicinfoinput {
@@ -40,6 +38,7 @@
 .info {
     padding-left: 150px;
     padding-top: 40px;
+    margin-left: 45px;
 }
 .inputforms {
     display: flex;
@@ -51,22 +50,37 @@
     margin-bottom: 20px;
     border-width: 3px;
     height: 40px;
-    color: black;
+    color: rgb(255, 255, 255);
 }
 .genreinput {
     width: 480px;
     margin-bottom: 20px;
     border-width: 3px;
     height: 40px;
-    color: black;
+    color: rgb(251, 251, 251);
 }
 .trackinput {
     width: 480px;
     margin-bottom: 20px;
     border-width: 3px;
     height: 40px;
-    color: black;
+    color: rgb(255, 255, 255);
 }
+
+.musicRecInput {
+    border-radius: 25px;
+    background-color: black;
+    height: 50px;
+    border-width: 1px;
+    border-color: rgb(87, 86, 86);
+    padding-left: 20px;
+}
+
+.musicRecInput:focus {
+    outline: none;
+    box-shadow: #958181; 
+}
+
 .extraspace {
     margin-bottom: 35px;
     display: block;
@@ -108,5 +122,6 @@
     margin-top: 20px;
 }
 .directionbody {
-    margin-left: 10px;
+    margin-left: 30px;
+    text-align: left;
 }
