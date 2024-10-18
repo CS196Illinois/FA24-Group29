@@ -101,6 +101,7 @@ try {
                 {recommendations.length > 0 && (
                     <div className="recommendation-section">
                         <h2>Your Music Recommendations</h2>
+                        <span></span>
                         <ul>
                             {recommendations.map((rec, index) => (
                                 <li key={index}>
