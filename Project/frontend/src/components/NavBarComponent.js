@@ -1,6 +1,7 @@
 import React from 'react';
 import logoImg from './img/MusicLogo.jpg'
 import {Link} from 'react-router-dom';
+import newlogoIMG from './img/soundlogo.png'
 
 
 function NavBarComponent() {
@@ -10,7 +11,7 @@ function NavBarComponent() {
         <header className="fpy-4 pt-4 bg-[#1B2A41] h-25 top-0 w-full">
             <div className="px-36 ml-1 mr-1 mx-auto max-w-full h-full flex flex-row justify-between">
                 <div className="flex items-center">
-                    <img className="w-auto h-20" src={logoImg} alt="Img not found"/>
+                    <img className="w-auto h-20" src={newlogoIMG} alt="Img not found"/>
                 </div>
 
                 <nav>

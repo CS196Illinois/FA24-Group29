@@ -1,6 +1,7 @@
 import React from 'react';
 import './aboutus.css';
 import {Link} from 'react-router-dom';
+import newsoundlogo from './img/soundlogo.png'
 
 function AboutUsComponent() {
     return (
@@ -8,7 +9,7 @@ function AboutUsComponent() {
             <div className = "bodyaboutus">
                 <h1 className = "header">Why did we decide to create this application?</h1>
                 <div className = "aboutus">
-                    <img className = "spotifylogo" src = "https://i.pinimg.com/originals/71/88/bd/7188bd71e4ec64aa9f464b94388961c8.jpg" alt = "Spotify logo" />
+                    <img className = "spotifylogo" src = {newsoundlogo} alt = "Spotify logo" />
                     <div className = "text">
                         <h1 className = "smalltext">THE FUTURE OF SONG RECOMMENDATIONS. PROVEN MODELS. PROVEN RESULTS</h1>
                         <p1>Imagine taking your favorite artists, genres, and albums, and being able to, from just that information, produce song recommendations that sounded new, but had a similar feel. Something intricate, but personalized.</p1>
