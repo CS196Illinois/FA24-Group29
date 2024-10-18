@@ -9,7 +9,7 @@ function HomePageBodyComponent() {
             <div class="relative">
                 <div class="lg:w-2/3">
                     <p class="max-w-lg text-sm font-normal tracking-wider text-gray-300 uppercase">Getting Better Music Recommendations</p>
-                    <h1 class="max-w-lg mt-6 text-4xl font-normal text-white sm:mt-10 sm:text-5xl lg:text-6xl xl:text-8xl"><span class="text-transparent text-[#CCC9DC]">Perfect Your</span> Playlists</h1>
+                    <h1 class="max-w-lg mt-6 text-4xl font-normal text-white sm:mt-10 sm:text-5xl lg:text-6xl xl:text-8xl"><span class="text-transparent text-white">Perfect Your</span> Playlists</h1>
                     <p class="max-w-lg mt-4 text-xl font-normal text-gray-400 sm:mt-8">Our machine learning models analyzes many various features of songs including tempo, genre, and lyrics. Input any song or playlist into our model and we'll give you recommendations. Add more info about how model works.</p>
                     <div class="mr-72 relative inline-flex items-center justify-center mt-8 sm:mt-12 group">
                         <div class="absolute transition-all duration-200 rounded-full -inset-px bg-blue-500 group-hover:shadow-lg group-hover:shadow-[#324A5F]"></div>
