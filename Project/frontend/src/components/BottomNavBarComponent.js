@@ -5,6 +5,7 @@ import snapchatlogo from "./img/snapchat.png"
 import facebooklogo from "./img/facebook.png"
 import instagramlogo from "./img/instagram.png"
 import twitterlogo from "./img/twitter.png"
+import newsoundlogo from "./img/soundlogo.png"
 
 const BottomNavBarComponent = () => {
     return (
@@ -31,7 +32,7 @@ const BottomNavBarComponent = () => {
                     <p4>Twitter</p4>
                 </div>
                 <div className = "image">
-                    <img className = "musiclogo" src={logoImg}></img>
+                    <img className = "musiclogo" src={newsoundlogo}></img>
                     <div className = "socialmedialogos">
                         <img className = "smalllogo" src = {snapchatlogo}></img>
                         <img className = "smalllogo" src = {facebooklogo}></img>
