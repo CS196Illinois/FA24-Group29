@@ -1,6 +1,6 @@
 .bottomnavbar {
     height: 250px;
-    background-color: rgb(43,37,37);
+    background-color: #1B2A41;
     display: flex;
     color: white;
     font-size: 16px;
@@ -35,7 +35,7 @@
     font-size: 19px;
     padding-bottom: 15px;
     font-weight: bold;
-    color: rgb(172,42,42);
+    color: gray;
 }
 
 .musiclogo {

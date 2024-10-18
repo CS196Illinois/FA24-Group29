@@ -7,7 +7,7 @@ function NavBarComponent() {
     return (
     <>
     <div className = "fixed w-full z-50">
-        <header className="fpy-4 pt-4 bg-black h-25 top-0 w-full">
+        <header className="fpy-4 pt-4 bg-[#1B2A41] h-25 top-0 w-full">
             <div className="px-36 ml-1 mr-1 mx-auto max-w-full h-full flex flex-row justify-between">
                 <div className="flex items-center">
                     <img className="w-auto h-20" src={logoImg} alt="Img not found"/>

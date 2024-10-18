@@ -68,7 +68,7 @@ try {
 
 
     return (
-        <div className = "body">
+        <div className = "bodyinputinfo">
             <h1 className = "bigheader"> Ready for some accurate </h1>
             <h className = "recommendations"> music recommendations?</h>
             <div className = "inputinfo">

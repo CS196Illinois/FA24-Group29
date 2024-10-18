@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
 
-.body {
-    background-image: linear-gradient(black, rgb(130,42,42));
+.bodyinputinfo {
+    background-color: #324A5F;
     height: 800px;
     font-family: "Nanum Gothic";
     color: white;
@@ -11,7 +11,7 @@
     display:flex;
 }
 .bigheader {
-    color: rgb(255,11,11);
+    color: #0C1821;
     padding-right: 500px;
     padding-top: 120px;
     align-items: center;
