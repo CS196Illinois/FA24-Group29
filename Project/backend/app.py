@@ -1,12 +1,16 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import sys
 import os
+import sys
+from pathlib import Path
 
-# Add the ml directory to the Python path
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'ml'))
-from main import recommend_songs
+# Add parent directory to path
+current_dir = Path(__file__).resolve().parent
+parent_dir = current_dir.parent
+sys.path.append(str(parent_dir))
 
+# Now import from ml directory
+from ml.main import recommend_songs
 app = Flask(__name__)
 CORS(app)
 
