@@ -1,122 +1,121 @@
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
 
 .bodyinputinfo {
-    background-color: #324A5F;
-    height: 800px;
-    font-family: "Nanum Gothic";
-    color: white;
+  background-color: rgb(27, 42, 65); /* Semi-transparent dark color */
+  position: relative;
+  z-index: 1;
+  height: 800px;
+  font-family: "Nanum Gothic";
+  color: white;
+  
 }
 
 .inputinfo {
-    display:flex;
+  display: flex;
 }
 .bigheader {
-    color: #0C1821;
-    padding-right: 500px;
-    padding-top: 120px;
-    align-items: center;
-    font-size: 50px;
-    margin-left: 100px;
-    font-weight: bold;
+  color: white;
+  padding-top: 120px;
+  align-items: center;
+  font-size: 50px;
+  font-weight: bold;
 }
 .recommendations {
-    color: white;
-    padding-right: 500px;
-    align-items: center;
-    font-size: 50px;
-    margin-left: 40px;
-    font-weight: bold;
-    padding-bottom: 200px;
-
+  letter-spacing: 0.2em;
+  color: #ccc9dc;
+  align-items: center;
+  font-size: 50px;
+  font-weight: bold;
+  padding-bottom: 200px;
 }
 .input {
-    padding-left: 40px;
+  padding-left: 40px;
 }
 
 .musicinfoinput {
-    vertical-align: center;
+  vertical-align: center;
 }
 
 .info {
-    padding-left: 0px;
-    padding-top: 40px;
+  padding-left: 0px;
+  padding-top: 40px;
 }
 .inputforms {
-    display: flex;
-    flex-direction: column;
-    margin-left: 0px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 0px;
 }
 .artistinput {
-    width: 480px;
-    margin-bottom: 20px;
-    border-width: 3px;
-    height: 40px;
-    color: black;
+  width: 480px;
+  margin-bottom: 20px;
+  border-width: 3px;
+  height: 40px;
+  color: black;
 }
 .genreinput {
-    width: 480px;
-    margin-bottom: 20px;
-    border-width: 3px;
-    height: 40px;
-    color: black;
+  width: 480px;
+  margin-bottom: 20px;
+  border-width: 3px;
+  height: 40px;
+  color: black;
 }
 .trackinput {
-    width: 480px;
-    margin-bottom: 20px;
-    border-width: 3px;
-    height: 40px;
-    color: black;
+  width: 480px;
+  margin-bottom: 20px;
+  border-width: 3px;
+  height: 40px;
+  color: black;
 }
 .extraspace {
-    margin-bottom: 35px;
-    display: block;
+  margin-bottom: 35px;
+  display: block;
 }
 .directions {
-    font-weight: bold;
-    font-size: 25px;
+  font-weight: bold;
+  font-size: 25px;
 }
-.resetbutton {
-    border: none;
-    border-color: #000000;
-    width: 200px;
-    transition-duration: .4s;
-    height: 40px;
-    background-color: black;
-    color: white;
+ .resetbutton {
+  border: none;
+  border-color: #000000;
+  width: 200px;
+  transition-duration: 0.4s;
+  height: 40px;
+  background-color: black;
+  color: white;
 }
 .resetbutton:hover {
-    background-color: gray;
+  background-color: gray;
 }
 
 .submitbutton {
-    background-color: black;
-    width: 200px;
-    height: 40px;
-    transition-duration: .4s;
-    border: none;
-    color: white;
-    margin-left: 40px;
+  background-color: black;
+  width: 200px;
+  height: 40px;
+  transition-duration: 0.4s;
+  border: none;
+  color: white;
+  margin-left: 40px;
 }
 
 .submitbutton:hover {
-    background-color: gray;
-}
+  background-color: gray;
+} */
 
 .label {
-    margin-right: 380px;
-    font-weight: bold;
-    margin-top: 20px;
+  margin-right: 380px;
+  font-weight: bold;
+  margin-top: 20px;
 }
 .directionbody {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 .recommendation-section {
-    background-color: white;
-    height: 350px;
-    border-radius: 20px;
-    margin-left: 20px;
-    border-width: 3px;
-    color: black;
-    padding-top: 20px;
-    margin-right: 5px;
+  background-color: white;
+  height: 350px;
+  border-radius: 20px;
+  margin-left: 20px;
+  border-width: 3px;
+  color: black;
+  padding-top: 20px;
+  margin-right: 5px;
 }
