@@ -2,8 +2,10 @@ import React from "react";
 import {Link} from 'react-router-dom';
 import newlogoImg from './img/soundlogo.png'
 
+
 function HomePageBodyComponent() {
     return (<>
+
     <section class="py-12 bg-[#0C1821] sm:pb-16 lg:pb-20 xl:pb-24">
         <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl pt-20">
             <div class="relative">
@@ -29,6 +31,7 @@ function HomePageBodyComponent() {
             </div>
         </div>
     </section>
+  
     </>)
 }
 
