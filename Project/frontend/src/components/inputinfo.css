@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
 
 .bodyinputinfo {
-    background-color: #324A5F;
+    background-color: #CCC9DC;
     height: 800px;
     font-family: "Nanum Gothic";
     color: white;
@@ -20,7 +20,7 @@
     font-weight: bold;
 }
 .recommendations {
-    color: white;
+    color: black;
     padding-right: 500px;
     align-items: center;
     font-size: 50px;
@@ -67,6 +67,32 @@
     height: 40px;
     color: black;
 }
+
+.directionbody {
+    color: black;
+}
+
+.genreinput, .trackinput, .artistinput {
+    border-radius: 20px;
+    padding-left: 10px;
+    background-color: #000000;
+    color: white;
+    border-color: #000000;
+}
+
+.genreinput:focus, .trackinput:focus, .artistinput:focus {
+    outline: none;
+}
+
+.label {
+    padding-left: 10px;
+    color: black;
+}
+
+.bigheader, .recommendations {
+    margin-right: 375px;
+}
+
 .extraspace {
     margin-bottom: 35px;
     display: block;
@@ -75,6 +101,28 @@
     font-weight: bold;
     font-size: 25px;
 }
+
+.directionbody {
+    margin-top: 30px;
+}
+
+.recommendations {
+    padding-top: 150px;
+}
+
+.bigheader {
+    padding-top: 200px;
+}
+
+.inputforms {
+    margin-bottom: 200px;
+}
+
+.input {
+    margin: -75px;
+    margin-left: 10px;
+}
+
 .resetbutton {
     border: none;
     border-color: #000000;
