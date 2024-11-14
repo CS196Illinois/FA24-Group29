@@ -1,16 +1,22 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from recommendation import recommend_songs  # Ensure this function works properly
+from flask_cors import cross_origin
+
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*", "allow_headers": ["Content-Type", "Authorization", "Access-Control-Allow-Origin"]}})
+
 # Root route for testing server
 @app.route('/')
 def home():
     return "Flask API is running!"
 
 # Recommendation route
+
+
 @app.route('/recommend', methods=['POST'])
+@cross_origin(origin=["http://localhost:3000/inputinfo"])
 def recommend():
     # Check if request body contains JSON
     print(f"Received request data: {request.json}")
