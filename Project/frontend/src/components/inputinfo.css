@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
 
 .bodyinputinfo {
-    background-color: #CCC9DC;
+    background-color: #324A5F;
     height: 800px;
     font-family: "Nanum Gothic";
     color: white;
@@ -65,11 +65,11 @@
     margin-bottom: 20px;
     border-width: 3px;
     height: 40px;
-    color: black;
+    color: rgb(0, 0, 0);
 }
 
 .directionbody {
-    color: black;
+    color: rgb(164, 153, 153);
 }
 
 .genreinput, .trackinput, .artistinput {
