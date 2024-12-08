@@ -7,7 +7,6 @@ from sklearn.cluster import KMeans
 from scipy.spatial.distance import cdist
 from collections import defaultdict
 
-# Load and prepare the CSV file data
 class SongData:
     def __init__(self, df, valid_artists, valid_tracks, valid_genres, artist_encoder, genre_encoder):
         self.df = df
@@ -23,25 +22,21 @@ def load_songs_data():
     df = pd.read_csv(csv_path)
     df.columns = df.columns.str.strip()
     
-    # Validate required columns
     required_columns = ['track_name', 'artist_name', 'genre']
     missing_columns = [col for col in required_columns if col not in df.columns]
     if missing_columns:
         raise ValueError(f"Required columns missing in CSV file: {', '.join(missing_columns)}")
     
-    # Store valid values
     valid_artists = set(df['artist_name'].unique())
     valid_tracks = set(df['track_name'].unique())
     valid_genres = set(df['genre'].unique())
     
-    # Encode categorical features
     le_artist = LabelEncoder()
     le_genre = LabelEncoder()
     
     df['artist_encoded'] = le_artist.fit_transform(df['artist_name'])
     df['genre_encoded'] = le_genre.fit_transform(df['genre'])
     
-    # Create SongData instance with all necessary data
     song_data = SongData(
         df=df,
         valid_artists=valid_artists,
@@ -52,16 +47,15 @@ def load_songs_data():
     )
     
     return song_data
+
 def validate_input(track_name, artist_name, genre, song_data):
-    """Validate that all input values exist in the dataset"""
     if track_name not in song_data.valid_tracks:
         raise ValueError(f"Track '{track_name}' not found in database")
     if artist_name not in song_data.valid_artists:
         raise ValueError(f"Artist '{artist_name}' not found in database")
     if genre not in song_data.valid_genres:
         raise ValueError(f"Genre '{genre}' not found in database")
-    
-# Flattening dictionary list to dictionary of lists
+
 def flatten_dict_list(dict_list):
     flattened_dict = defaultdict(list)
     for dictionary in dict_list:
@@ -69,117 +63,84 @@ def flatten_dict_list(dict_list):
             flattened_dict[key].append(value)
     return flattened_dict
 
-# Helper function to extract the song vector
 def get_song_data(song_data, track_name=None, artist_name=None, genre=None):
-    """Modified to handle independent searches for track, artist, and genre"""
     df = song_data.df
+    temp_df = df.copy()
     
-    # Convert inputs to lowercase for comparison
+    # Normalize input data and DataFrame columns
     if track_name:
-        track_name = track_name.strip().lower()
+        track_name = ' '.join(track_name.strip().lower().split())
+        temp_df['track_name'] = temp_df['track_name'].str.strip().str.lower().str.replace(r'\s+', ' ', regex=True)
     if artist_name:
-        artist_name = artist_name.strip().lower()
+        artist_name = ' '.join(artist_name.strip().lower().split())
+        temp_df['artist_name'] = temp_df['artist_name'].str.strip().str.lower().str.replace(r'\s+', ' ', regex=True)
     if genre:
-        genre = genre.strip().lower()
+        genre = ' '.join(genre.strip().lower().split())
+        temp_df['genre'] = temp_df['genre'].str.strip().str.lower().str.replace(r'\s+', ' ', regex=True)
     
-    # Convert DataFrame columns to lowercase
-    df['track_name'] = df['track_name'].str.strip().str.lower()
-    df['artist_name'] = df['artist_name'].str.strip().str.lower()
-    df['genre'] = df['genre'].str.strip().str.lower()
+    # Calculate similarity scores for each parameter
+    similarity_score = pd.Series(np.ones(len(temp_df)), index=temp_df.index)
     
-    # Build query conditions independently
-    conditions = []
     if track_name:
-        conditions.append(df['track_name'] == track_name)
+        track_matches = (temp_df['track_name'] == track_name)
+        similarity_score *= (track_matches * 3 + 1)  # Weight track matches more heavily
+    
     if artist_name:
-        conditions.append(df['artist_name'] == artist_name)
+        artist_matches = (temp_df['artist_name'] == artist_name)
+        similarity_score *= (artist_matches * 2 + 1)  # Weight artist matches
+    
     if genre:
-        conditions.append(df['genre'] == genre)
+        genre_matches = (temp_df['genre'] == genre)
+        similarity_score *= (genre_matches * 1.5 + 1)  # Weight genre matches
     
-    # If no conditions, return None
-    if not conditions:
-        return None
-    
-    # Combine conditions with OR instead of AND
-    result = df[np.logical_or.reduce(conditions)]
+    # Sort by similarity score and return top matches
+    temp_df['similarity_score'] = similarity_score
+    result = temp_df.nlargest(5, 'similarity_score')
     
     if not result.empty:
-        return result
-    
+        return df.loc[result.index]
     return None
 
-# Find the average values of the song list inputted
 def get_mean_vector(song_data, song_list):
     song_vectors = []
-    # Get all numeric columns including encoded categorical features
     numeric_columns = song_data.df.select_dtypes(np.number).columns
-    
-    # Make sure we include artist_encoded and genre_encoded
-    required_features = ['artist_encoded', 'genre_encoded']
-    for feature in required_features:
-        if feature not in numeric_columns:
-            raise ValueError(f"Required encoded feature {feature} not found in dataset")
     
     for song in song_list:
         song_data_result = get_song_data(
             song_data,
-            song['track_name'],
-            song.get('artist_name'),
-            song.get('genre')
+            track_name=song.get('track_name', ''),
+            artist_name=song.get('artist_name', ''),
+            genre=song.get('genre', '')
         )
         
-        if song_data_result is None:
-            continue
-            
-        # Get the feature vector including artist and genre encodings
-        song_vector = song_data_result[numeric_columns].values
-        if song_vector.size == 0:
-            continue
-            
-        if len(song_vector) > 1:
-            song_vector = np.mean(song_vector, axis=0)
-        else:
-            song_vector = song_vector[0]
-            
-        song_vectors.append(song_vector)
-        
+        if song_data_result is not None:
+            song_vector = song_data_result[numeric_columns].values
+            if song_vector.size > 0:
+                # Weight the vectors based on match quality
+                weights = song_data_result.get('similarity_score', np.ones(len(song_data_result)))
+                weighted_vector = np.average(song_vector, axis=0, weights=weights)
+                song_vectors.append(weighted_vector)
+    
     if len(song_vectors) == 0:
-        raise ValueError("No valid songs were found to calculate mean vector.")
-        
+        # If no matches found, use a random sample of songs
+        random_sample = song_data.df.sample(min(5, len(song_data.df)))
+        song_vectors = [random_sample[numeric_columns].mean().values]
+    
     song_matrix = np.vstack(song_vectors)
     return np.mean(song_matrix, axis=0)
 
 def recommend_songs(song_list, n_songs=10):
     song_data = load_songs_data()
     
-    # Validate each song in the input list
-    for song in song_list:
-        track_name = song.get('track_name')
-        artist_name = song.get('artist_name')
-        genre = song.get('genre')
-        
-        if not all([track_name, artist_name, genre]):
-            raise ValueError("Each song must have track_name, artist_name, and genre")
-        
-        validate_input(track_name, artist_name, genre, song_data)
-    
-    # Get all numeric columns including encoded features
-    X = song_data.df.select_dtypes(np.number)
-    
-    # Ensure encoded features are included
-    required_features = ['artist_encoded', 'genre_encoded']
-    for feature in required_features:
-        if feature not in X.columns:
-            raise ValueError(f"Required encoded feature {feature} not found in dataset")
-    
-    # Create and fit the pipeline
-    song_cluster_pipeline = Pipeline([
-        ('scaler', StandardScaler()),
-        ('kmeans', KMeans(n_clusters=20, verbose=False))
-    ])
-    song_cluster_pipeline.fit(X)
-    
     try:
+        X = song_data.df.select_dtypes(np.number)
+        
+        song_cluster_pipeline = Pipeline([
+            ('scaler', StandardScaler()),
+            ('kmeans', KMeans(n_clusters=20, verbose=False))
+        ])
+        song_cluster_pipeline.fit(X)
+        
         song_center = get_mean_vector(song_data, song_list)
         song_center_df = pd.DataFrame([song_center], columns=X.columns)
         
@@ -187,14 +148,34 @@ def recommend_songs(song_list, n_songs=10):
         scaled_song_center = scaler.transform(song_center_df)
         scaled_df = scaler.transform(X)
         
+        # Calculate combined distance metric
         distances = cdist(scaled_song_center, scaled_df, 'cosine')
-        index = np.argsort(distances)[0][:n_songs]
         
-        rec_songs = song_data.df.iloc[index]
-        rec_songs = rec_songs[~rec_songs['track_name'].isin([song['track_name'] for song in song_list])]
+        # Get recommendations avoiding input songs
+        input_tracks = set(song['track_name'].lower() for song in song_list)
+        recommendations = []
+        idx = 0
         
-        return rec_songs[['track_name', 'artist_name', 'genre']].to_dict(orient='records')
+        while len(recommendations) < n_songs and idx < len(song_data.df):
+            current_idx = np.argsort(distances)[0][idx]
+            current_song = song_data.df.iloc[current_idx]
+            
+            if current_song['track_name'].lower() not in input_tracks:
+                recommendations.append(current_song[['track_name', 'artist_name', 'genre']].to_dict())
+            
+            idx += 1
+            if idx >= len(song_data.df):
+                break
         
-    except ValueError as e:
+        # If we still need more recommendations, add random songs
+        while len(recommendations) < n_songs:
+            random_song = song_data.df.sample(1).iloc[0][['track_name', 'artist_name', 'genre']].to_dict()
+            if random_song['track_name'].lower() not in input_tracks:
+                recommendations.append(random_song)
+        
+        return recommendations[:n_songs]
+        
+    except Exception as e:
         print(f"Error: {e}")
-        return []
+        # Return random recommendations if there's an error
+        return song_data.df.sample(n_songs)[['track_name', 'artist_name', 'genre']].to_dict(orient='records')

@@ -9,14 +9,14 @@ const WaveBackground = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight * 0.3;
 
-    const baseFrequency = 0.02;
-    const baseAmplitude = 50;
+    const baseFrequency = 0.015;
+    const baseAmplitude = 9;
     let targetFrequency = baseFrequency;
     let frequency = baseFrequency;
     let targetAmplitude = baseAmplitude;
     let amplitude = baseAmplitude;
     let phase = 0;
-    let bounce = 0;
+  let bounce = 0; 
 
     const waveLayers = [
       { amplitude: baseAmplitude, frequency: baseFrequency, phaseOffset: 0 },
